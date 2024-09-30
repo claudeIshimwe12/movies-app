@@ -1,0 +1,48 @@
+<section
+  class="sm:p-4 bg-dark-blue md:fixed md:top-0 md:left-0 md:h-full relative"
+>
+  <div
+    class="bg-semi-dark-blue px-4 w-full flex justify-between items-center sm:rounded-md md:flex-col md:min-h-full md:py-8"
+  >
+    <div
+      class="flex items-center justify-between w-[70%] md:w-full md:flex-col md:gap-4"
+    >
+      <div>
+        <img src="assets/images/logo.svg" alt="logo image" />
+      </div>
+      <div class="flex justify-between gap-3 p-4 md:flex-col">
+        <app-home-icon
+          routerLink="/home"
+          [fill]="currentRoute === 'home' ? '#FFFFFF' : '#5A698F'"
+        ></app-home-icon>
+
+        <app-movies-icon
+          routerLink="/movies"
+          [fill]="currentRoute === 'movies' ? '#FFFFFF' : '#5A698F'"
+        ></app-movies-icon>
+
+        <app-tv-icon
+          routerLink="/tv-series"
+          [fill]="currentRoute === 'tv-series' ? '#FFFFFF' : '#5A698F'"
+        ></app-tv-icon>
+
+        <app-book-mark-icon
+          routerLink="/book-marks"
+          [fill]="currentRoute === 'book-marks' ? '#FFFF' : '#5A698F'"
+        ></app-book-mark-icon>
+      </div>
+    </div>
+    <div class="h-full" (click)="onAvatarClick()">
+      <div class="h-10 w-10 border-2 border-white rounded-full">
+        <img src="assets/images/image-avatar.png" alt="image-avatar" />
+      </div>
+    </div>
+  </div>
+  @if (showDialog) {
+    <div
+      class="absolute top-16 md:top-auto md:bottom-24 z-50 right-4 bg-semi-dark-blue md:bg-dark-blue md:mx-2 p-4 rounded-md"
+    >
+      <h1 class="text-red text-bm md:text-bs" (click)="onLogOut()">Log Out</h1>
+    </div>
+  }
+</section>

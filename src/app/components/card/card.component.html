@@ -1,0 +1,53 @@
+<section
+  class="group w-[240px] h-[140px] sm:w-[470px] sm:h-[230px] relative rounded-md cursor-pointer"
+>
+  <img
+    [src]="movie.image"
+    alt="imgage"
+    class="h-full w-full rounded-md object-cover group-hover:opacity-20 transition-opacity ease-in duration-300"
+  />
+  <!-- Book mark-->
+  <div
+    class="absolute top-4 right-4 z-50 p-2 bg-dark-blue hover:bg-white cursor-pointer rounded-full"
+    (click)="bookMark()"
+  >
+    <img src="assets/images/icon-bookmark-empty.svg" alt="Book mark icon" />
+    <!-- <img src="assets/images/icon-bookmark-full.svg" alt="Book mark icon" /> -->
+  </div>
+
+  <div
+    class="absolute cursor-pointer inset-0 flex justify-center items-center opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100"
+  >
+    <div
+      class="bg-white bg-opacity-45 p-2 rounded-full flex gap-4 items-center text-white"
+    >
+      <div>
+        <img src="assets/images/icon-play.svg" alt="icon-play" />
+      </div>
+      <p class="mr-1">Play</p>
+    </div>
+  </div>
+  <div class="absolute bottom-4 left-4 text-bm">
+    <div class="flex items-center gap-2">
+      <h1 class="text-white text-bs sm:text-bm">
+        {{ movie.release_date | date: "yyyy" }}
+      </h1>
+
+      <div class="w-2 h-2 rounded-full bg-white"></div>
+      @if (movie.type === "movie") {
+        <img src="assets/images/icon-category-movie.svg" alt=" Icon Category" />
+      }
+      @if (movie.type === "tv") {
+        <img src="assets/images/icon-category-tv.svg" alt=" Icon Category" />
+      }
+      <!-- <div class="w-2 h-2 rounded-full bg-white"></div> -->
+
+      <h1 class="text-white text-bs sm:text-bm">
+        {{ movie.type === "movie" ? "Movie" : "Tv series" }}
+      </h1>
+      <div class="w-2 h-2 rounded-full bg-white"></div>
+      <h1 class="text-white text-bs sm:text-bm">PG</h1>
+    </div>
+    <h1 class="text-white text-bm sm:text-hs">{{ movie.title }}</h1>
+  </div>
+</section>

@@ -1,0 +1,60 @@
+<ng-content *ngIf="loader$ | async">
+  <section class="w-full min-h-screen flex items-center justify-center">
+    <div class="loader"></div>
+  </section>
+</ng-content>
+<ng-content *ngIf="error$ | async as error; else Content">
+  <div class="min-h-screen flex items-center justify-center">
+    <h1 class="text-hl text-white">Oops!, Something went wrong</h1>
+  </div>
+</ng-content>
+
+<ng-template #Content>
+  <section
+    class="h-full max-w-full md:w-screen md:pl-32 px-4 sm:px-8 md:px-12 py-8"
+  >
+    <section>
+      <div class="flex gap-4 items-center">
+        <img src="assets/images/icon-search.svg" alt="search icon" />
+        <form [formGroup]="searchForm">
+          <input
+            type="text"
+            formControlName="search"
+            class="bg-dark-blue placeholder:text-slate-100 sm:placeholder:text-hm placeholder:font-thin sm:w-full focus:outline-none text-white sm:text-hm caret-red"
+            placeholder="Search for  TV series "
+          />
+        </form>
+      </div>
+
+      <!--Search Results-->
+      @if (showSearchPanel) {
+        <ng-content *ngIf="searchResults$ | async as RecMovies; else Loader">
+          <h1 class="text-white text-hl my-4">Found {{ RecMovies.length }}</h1>
+
+          <div
+            class="grid grid-cols-2 sm:grid-cols-3 gap-2 md:grid-cols-4 min-h-screen"
+          >
+            @for (movie of RecMovies; track $index) {
+              <app-small-card [movie]="movie"></app-small-card>
+            }
+          </div>
+        </ng-content>
+        <ng-template #Loader>
+          <section class="w-full min-h-screen flex items-center justify-center">
+            <div class="loader"></div>
+          </section>
+        </ng-template>
+      }
+    </section>
+    @if (!showSearchPanel) {
+      <h1 class="text-white text-hl my-4">TV Series</h1>
+      <ng-content *ngIf="series$ | async as RecMovies">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 md:grid-cols-4">
+          @for (movie of RecMovies; track $index) {
+            <app-small-card [movie]="movie"></app-small-card>
+          }
+        </div>
+      </ng-content>
+    }
+  </section>
+</ng-template>

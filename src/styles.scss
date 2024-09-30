@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Font Style*/
+
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+
+* {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --main-color: #10141e;
+  --second-color: #161d2f;
+  --white: #ffffff;
+  --red: #fc4747;
+  --blue: #5a698f;
+}

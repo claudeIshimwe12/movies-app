@@ -1,0 +1,126 @@
+.wrapper {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  .content {
+    padding: 32px;
+    width: 400px;
+    height: fit-content;
+    background: #161d2f;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    .error__message {
+      color: #fc4747;
+    }
+    .title {
+      font-style: normal;
+      font-weight: 300;
+      font-size: 32px;
+      line-height: 40px;
+      letter-spacing: -0.5px;
+      color: #ffff;
+      margin-bottom: 32px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      .input__wrapper {
+        position: relative;
+        width: 100%;
+        .input {
+          width: 100%;
+          font-style: normal;
+          font-weight: 300;
+          font-size: 15px;
+          line-height: 19px;
+          color: #ffff;
+
+          opacity: 0.5;
+          background-color: transparent;
+          border: none;
+          border-bottom: 2px solid #5a698f;
+          padding: 16px;
+          transition: 0.3s;
+          &:focus {
+            transition: 0.3s;
+            opacity: 1;
+            outline: none;
+            border-bottom: 2px solid #ffff;
+          }
+        }
+
+        .input__error {
+          @extend .input;
+          border-bottom: 2px solid #fc4747;
+        }
+        .error__wrapper {
+          top: 15px;
+          right: 0;
+          position: absolute;
+          .error {
+            color: #fc4747;
+          }
+        }
+      }
+
+      button {
+        width: 336px;
+        height: 48px;
+        background: #fc4747;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 18px;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 19px;
+        text-align: center;
+        color: #fff;
+        transition: 0.3s;
+        &:hover {
+          transition: 0.3s;
+          background: #fff;
+          color: #10141e;
+        }
+      }
+    }
+    p {
+      text-align: center;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 19px;
+      color: #ffffff;
+      margin-top: 24px;
+
+      span {
+        color: #fc4747;
+
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .wrapper {
+    gap: 10px;
+    margin-top: 30px;
+    .content {
+      padding: 10px;
+      width: 100%;
+
+      form {
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
